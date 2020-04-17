@@ -1,10 +1,7 @@
 package com.uek223.firstgraphqlapp.domainmodels.teacher;
 
 import com.uek223.firstgraphqlapp.domainmodels.apprentice.Apprentice;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.*;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -12,17 +9,19 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static org.neo4j.ogm.annotation.Relationship.OUTGOING;
+
 @NodeEntity
 public class Teacher{
 
     @Id
     @GeneratedValue
     private long id;
-
+    @Property("name")
     private String name;
-
+    @Property("company")
     private String company;
-
+    @Property("age")
     private int age;
 
 
@@ -69,7 +68,7 @@ public class Teacher{
 
 
     //Relationship to Apprentice
-    @Relationship(type = "TEACHES", direction = Relationship.OUTGOING)
+    @Relationship(type = "TEACHES", direction = OUTGOING)
     public Set<Apprentice> students;
 
     public void teaches(Apprentice apprentice) {

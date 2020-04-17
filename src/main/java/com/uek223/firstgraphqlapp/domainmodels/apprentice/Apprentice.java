@@ -3,6 +3,7 @@ package com.uek223.firstgraphqlapp.domainmodels.apprentice;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Property;
 
 @NodeEntity
 public class Apprentice {
@@ -10,13 +11,13 @@ public class Apprentice {
     @Id
     @GeneratedValue
     private Long id;
-
+    @Property("name")
     private String name;
-
+    @Property("company")
     private String company;
-
+    @Property("age")
     private int age;
-
+    @Property("apprenticeshipyear")
     private int apprenticeshipYear;
 
     public Apprentice() {}
